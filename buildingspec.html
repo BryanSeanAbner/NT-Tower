@@ -57,40 +57,205 @@
 
 /* Background variations */
 .bg-whole {
-  background-image: url('assets/images/blog-image5.jpg');
+  background-image: url('assets/images/Main Background.png');
 }
 
 .bg-floor {
-  background-image: url('assets/images/blog-image4.jpg');
+  background-image: none; /* Dihapus agar JS bisa mengatur background dinamis */
+  background-position: right; /* Memastikan gambar berada di kanan */
+  background-size: contain;   /* Memastikan gambar terlihat sepenuhnya */
+  background-repeat: no-repeat; /* Mencegah pengulangan gambar */
 }
 
 .bg-tenant {
-  background-image: url('assets/images/blog-image3.jpg');
+  background-image: none; /* Dihapus agar JS bisa mengatur background dinamis */
 }
 
-/* Tabs */
+.zone-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: none; /* Menghilangkan latar belakang */
+  border: none; /* Menghilangkan border */
+  border-radius: 0; /* Menghilangkan border-radius */
+  padding: 0; /* Menghilangkan padding */
+  max-width: fit-content; /* Memungkinkan lebar menyesuaikan konten */
+  margin: 0;
+  text-align: left;
+  transition: opacity 0.5s ease-in-out;
+  box-shadow: none; /* Menghilangkan box-shadow */
+}
+
+.zone-item img {
+  max-width: 400px; /* Menyesuaikan ukuran agar lebih proporsional */
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+.zone-item .zone-text-content {
+  flex: 1;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.zone-item .zone-text-content div {
+  text-align: left;
+}
+.zone-item .zone-text-content p {
+  text-align: left;
+}
+
+/* Override default banner_content padding for floor zone to make it look like a floating card */
+.tab-content-floor .banner_content {
+  padding: 0; /* Menghilangkan padding */
+  max-width: fit-content; /* Memungkinkan lebar menyesuaikan konten */
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: fit-content; /* Mengatur lebar container sesuai konten */
+  height: auto;
+  position: fixed; /* Memastikan posisi tetap relatif terhadap viewport */
+  top: -100px; /* Menyesuaikan posisi vertikal lebih akurat berdasarkan 'X' */
+  left: -100px; /* Menyesuaikan posisi horizontal lebih akurat berdasarkan 'X' */
+}
+
+.zone-carousel-container {
+    width: auto; /* Allow content to adjust */
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.zone-nav-button {
+  position: absolute;
+  top: 120%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.zone-nav-button:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.prev-zone-button {
+  left: 20px;
+}
+
+.next-zone-button {
+  right: 20px;
+}
+
+@media (max-width: 768px) {
+  .zone-item {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto; /* Center on small screens */
+  }
+  .zone-item img {
+    max-width: 100%;
+  }
+  .zone-item .zone-text-content div,
+  .zone-item .zone-text-content p {
+    text-align: center;
+  }
+  .zone-nav-button {
+    top: auto;
+    bottom: 20px;
+    transform: translateX(-50%);
+    left: 50%;
+    right: auto;
+  }
+  .prev-zone-button {
+    margin-left: -60px;
+  }
+  .next-zone-button {
+    margin-left: 60px;
+  }
+}
+
+.banner-section {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center; /* Kembali ke tengah vertikal untuk konten */
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.banner_content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 40px 40px 40px;
+  color: #fff;
+  max-width: 800px;
+  margin: 0;
+  text-align: left;
+}
+
+.banner_content h1 {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  letter-spacing: 2px;
+}
+
+.banner_content p {
+  font-size: 22px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
 .tabs {
   position: relative;
   z-index: 2;
-  padding: 20px;
   display: flex;
   gap: 1rem;
+  justify-content: flex-start;
+  margin-bottom: 32px;
 }
 
 .tab {
-  padding: 10px 20px;
-  border: none;
-  background: #f3f3f3;
+  padding: 12px 32px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 0;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .tab.active,
 .tab:hover {
-  background: #333;
-  color: #fff;
+  background: #fff;
+  color: #222;
 }
 
+/* Overlay agar teks lebih jelas */
+.banner-section .overlay-bg {
+  display: none;
+}
 </style>
 <body>
 <!-- Header  -->
@@ -165,39 +330,62 @@
         </div>
     </header>
     <section class="banner-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-sm-12 col-12 order-lg-1 order-2 banner-column">
-                    <div class="banner_content" data-aos="fade-left">
-                        <div class="content">
-                            <h1>Building Specification</h1>
-                            <p>Euis aute irure dolor in rearehenderit in eouta velireu esse fugiat nulla pariatur.</p>
-                        </div>
-                            <div class="tabs">
-                                <button class="tab active" data-bg="bg-whole">Whole Building</button>
-                                <button class="tab" data-bg="bg-floor">Floor Zone</button>
-                                <button class="tab" data-bg="bg-tenant">Tenant Zone</button>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-12 col-sm-12 col-12 order-lg-2 order-1">
-                    <div class="banner_wrapper">
-                        <figure class="sub-bannerimage mb-0" data-aos="fade-up">
-                            <img src="./assets/images/about-bannerimage.jpg" alt="" class="img-fluid">
-                        </figure>
-                    </div>
+        <div class="background-container bg-whole"></div>
+        <div class="overlay-bg"></div>
+        <div class="tab-content tab-content-whole" style="display:block;">
+          <div class="banner_content" data-aos="fade-left">
+            <h1>Building Specification</h1>
+            <div class="tabs">
+                <button class="tab active" data-bg="bg-whole" data-content="whole">WHOLE BUILDING</button>
+                <button class="tab" data-bg="bg-floor" data-content="floor">FLOOR ZONE</button>
+                <button class="tab" data-bg="bg-tenant" data-content="tenant">TENANT CONFIGURATION</button>
+            </div>
+            <p style="font-size:20px;max-width:700px;margin:0 0 24px 0;">Trinity Tower is a new iconic office building located in the heart of CBD Jakarta that offers prestige and elegance for rising and established enterprises alike. This new office tower for lease offers synergetic design that reflects both combination of excellent Japanese architecture and the elegance of Indonesian craftsmanship.</p>
+            <p style="font-size:20px;max-width:700px;margin:0;">Developed by PT Windas Development, a joint venture company among Mitsubishi Estate Asia, The Gesit Companies, Shimizu Corporation, and Santini Group, Trinity Tower is a combination of cultures reflected on its simplicity of design, state of the art technology and various retail facilities to satisfy the need of its discerning tenants.</p>
+          </div>
+        </div>
+        <div class="tab-content tab-content-floor" style="display:none;">
+          <div class="banner_content" data-aos="fade-left">
+            <div class="zone-item high-zone" style="display:block;">
+                <img src="assets/images/Map High Zone.png" alt="High Zone Map">
+                <div class="zone-text-content">
+                    <div style="color:#fff;font-size:32px;font-weight:600;margin-bottom:10px;">High Zone</div>
+                    <p style="color:#fff;font-size:18px;">Level 40 - 55</p>
+                    <p style="color:#fff;font-size:18px;">1,728 - 1,809 sqm Semigross</p>
                 </div>
             </div>
+            <div class="zone-item mid-zone" style="display:none;">
+                <img src="assets/images/Map Mid Zone.png" alt="Mid Zone Map">
+                <div class="zone-text-content">
+                    <div style="color:#fff;font-size:32px;font-weight:600;margin-bottom:10px;">Mid Zone</div>
+                    <p style="color:#fff;font-size:18px;">Level 23 - 38</p>
+                    <p style="color:#fff;font-size:18px;">1,751 sqm Semigross</p>
+                </div>
+            </div>
+            <div class="zone-item low-zone" style="display:none;">
+                <img src="assets/images/Map Low Zone.png" alt="Low Zone Map">
+                <div class="zone-text-content">
+                    <div style="color:#fff;font-size:32px;font-weight:600;margin-bottom:10px;">Low Zone</div>
+                    <p style="color:#fff;font-size:18px;">Level 6 - 21</p>
+                    <p style="color:#fff;font-size:18px;">1,722 sqm Semigross</p>
+                </div>
+            </div>
+            <button class="zone-nav-button prev-zone-button">&lt;</button>
+            <button class="zone-nav-button next-zone-button">&gt;</button>
+          </div>
+        </div>
+        <div class="tab-content tab-content-tenant" style="display:none;">
+          <div class="banner_content" data-aos="fade-left" style="background:none;padding:60px 40px 40px 40px;max-width:100%;text-align:left;">
+            <!-- Konten untuk Tenant Configuration bisa ditambahkan di sini -->
+            <p style="font-size:20px;max-width:700px;margin:0 auto 24px auto;">Konten untuk Tenant Configuration akan ditampilkan di sini.</p>
+          </div>
         </div>
     </section>
 </div>
 <!-- Building Specification page -->
-<section class="aboutpage-section about-section">
+<section class="aboutpage-section about-section" style="background-image: url('assets/images/Main Background.png'); background-size: cover; background-position: center;">
   <div class="container building-spec-section">
-
-    <div class="background-container bg-whole">
-      <!-- Add optional content here if needed -->
-    </div>
+    <!-- Background sudah di atas, tidak perlu di sini lagi -->
   </div>
 </section>
 
@@ -304,16 +492,76 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".tab");
   const backgroundContainer = document.querySelector(".background-container");
+  const tabContents = {
+    whole: document.querySelector('.tab-content-whole'),
+    floor: document.querySelector('.tab-content-floor'),
+    tenant: document.querySelector('.tab-content-tenant')
+  };
+
+  const zoneItems = document.querySelectorAll('.zone-item');
+  const nextZoneButton = document.querySelector('.next-zone-button');
+  const prevZoneButton = document.querySelector('.prev-zone-button');
+  let currentZoneIndex = 0;
+
+  const zoneBackgrounds = [
+    'assets/images/High Zone .jpg',
+    'assets/images/Mid Zone .jpg',
+    'assets/images/Low Zone.jpg'
+  ];
+
+  function updateZoneDisplay() {
+    zoneItems.forEach((item, index) => {
+      item.style.display = (index === currentZoneIndex) ? 'flex' : 'none';
+    });
+    backgroundContainer.style.backgroundImage = `url('${zoneBackgrounds[currentZoneIndex]}')`;
+    backgroundContainer.style.opacity = '1';
+  }
+
+  if (tabContents.floor.style.display === 'block') {
+    updateZoneDisplay();
+  }
+
+  nextZoneButton.addEventListener('click', () => {
+    currentZoneIndex = (currentZoneIndex + 1) % zoneItems.length;
+    updateZoneDisplay();
+  });
+
+  prevZoneButton.addEventListener('click', () => {
+    currentZoneIndex = (currentZoneIndex - 1 + zoneItems.length) % zoneItems.length;
+    updateZoneDisplay();
+  });
 
   tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active state from all
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
+    tab.addEventListener('click', () => {
+      const targetContent = tab.dataset.content;
 
-      // Change background
-      const bgClass = tab.getAttribute("data-bg");
-      backgroundContainer.className = "background-container " + bgClass;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      for (const key in tabContents) {
+        tabContents[key].style.display = 'none';
+      }
+
+      tabContents[targetContent].style.display = 'block';
+
+      // Update background based on active tab
+      backgroundContainer.classList.remove('bg-whole', 'bg-floor', 'bg-tenant');
+      backgroundContainer.style.backgroundImage = ''; // Clear previous dynamic background
+      backgroundContainer.style.opacity = '0'; // Hide briefly for transition
+
+      // Ensure overlay is present for all tabs initially, then manage dynamically
+      document.querySelector('.overlay-bg').style.display = 'block'; // Make overlay visible by default for all relevant sections
+
+      if (targetContent === 'whole') {
+        backgroundContainer.classList.add('bg-whole');
+        backgroundContainer.style.opacity = '1';
+      } else if (targetContent === 'floor') {
+        backgroundContainer.classList.add('bg-floor');
+        updateZoneDisplay();
+      } else if (targetContent === 'tenant') {
+        backgroundContainer.classList.add('bg-tenant');
+        backgroundContainer.style.opacity = '1';
+      }
     });
   });
 });
