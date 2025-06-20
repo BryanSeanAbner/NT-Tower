@@ -506,6 +506,48 @@
   background: #222!important;
   color: #E1B261 !important;
 }
+
+  .building-information {
+    padding: 80px 5%;
+    font-family: "Georgia", serif;
+    background-color: #fff;
+    color: #000;
+  }
+
+  .building-information h2 {
+    font-size: 56px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    color: #000; /* pastikan hitam */
+  }
+
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .info-table tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .info-table td {
+    padding: 20px 10px;
+    vertical-align: top;
+    font-size: 20px;
+  }
+
+  .info-table td.label {
+    font-weight: bold;
+    width: 25%;
+    font-family: "Georgia", serif;
+  }
+
+  .info-table td.value {
+    width: 75%;
+    font-family: "Segoe UI", sans-serif;
+  }
 </style>
 <body>
 <!-- Header  -->
@@ -641,6 +683,28 @@
       </div>
     </section>
 </div>
+
+<section class="building-information">
+  <h2>Building Information</h2>
+  <table class="info-table">
+    <tr>
+      <td class="label">Building Name</td>
+      <td class="value">NT Tower</td>
+    </tr>
+    <tr>
+      <td class="label">Location</td>
+      <td class="value">Jl. Pulomas Selatan Kav. Blok, Jl. Pulomas Selatan No.31, RT.7/RW.7, Kayu Putih, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13210</td>
+    </tr>
+    <tr>
+      <td class="label">Completion</td>
+      <td class="value">January 2024</td>
+    </tr>
+    <tr>
+      <td class="label">Land Area</td>
+      <td class="value">+/- 16,080 sqm</td>
+    </tr>
+  </table>
+</section>
 <!-- Building Specification page -->
 <!-- Section aboutpage-section.about-section dihapus agar tidak ada background ganda di bawah banner-section -->
 
